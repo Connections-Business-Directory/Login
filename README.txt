@@ -43,5 +43,7 @@ None yet...
 
 [Screenshots can be found here.](http://connections-pro.com/add-on/login/)
 
+== Changelog ==
+
 = 1.0 =
 Initial release.
