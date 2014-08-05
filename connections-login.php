@@ -57,6 +57,9 @@ if ( ! class_exists('Connections_Login') ) {
 
 			// Register the widget.
 			add_action( 'widgets_init', create_function( '', 'register_widget( "CN_Login_Form_Widget" );' ) );
+
+			// Register the shortcode.
+			add_shortcode( 'connections_login', array( __CLASS__, 'shortcode' ) );
 		}
 
 		/**
@@ -65,6 +68,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @access  private
 		 * @static
 		 * @since  1.0
+		 *
 		 * @return void
 		 */
 		private static function defineConstants() {
@@ -81,6 +85,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @access private
 		 * @since  1.0
 		 * @static
+		 *
 		 * @return void
 		 */
 		private static function loadDependencies() {
@@ -100,6 +105,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @uses   get_locale()
 		 * @uses   load_textdomain()
 		 * @uses   load_plugin_textdomain()
+		 *
 		 * @return void
 		 */
 		public static function loadTextdomain() {
@@ -132,7 +138,9 @@ if ( ! class_exists('Connections_Login') ) {
 		 *
 		 * @access private
 		 * @since  1.0
+		 * @static
 		 * @param  array  $blocks An associtive array containing the registered content block settings options.
+		 *
 		 * @return array
 		 */
 		public static function settingsOption( $blocks ) {
@@ -143,22 +151,17 @@ if ( ! class_exists('Connections_Login') ) {
 		}
 
 		/**
-		 * Renders the login form content block.
+		 * Echos or returns the core WP login form.
 		 *
-		 * Called by the cn_meta_output_field-login_form action in cnOutput->getMetaBlock().
-		 *
-		 * @access  private
+		 * @access private
 		 * @since  1.0
 		 * @static
-		 * @param  object $entry          An instance of the cnEntry object.
-		 * @param  object $shortcode_atts The shortcode $atts array.
-		 * @param  array  $template       An instance of the cnTemplate object.
+		 * @uses   wp_login_form()
+		 * @param  array  $atts An associative array passed to wp_login_form()
 		 *
 		 * @return string
 		 */
-		public static function block( $entry, $shortcode_atts = array(), $template = FALSE ) {
-
-			if ( is_user_logged_in() ) return;
+		public static function loginForm( $atts = array() ) {
 
 			$defaults = array(
 				'echo'           => TRUE,
@@ -177,9 +180,57 @@ if ( ! class_exists('Connections_Login') ) {
 				'value_remember' => FALSE,
 			);
 
-			$atts = wp_parse_args( $shortcode_atts, $defaults );
+			$atts = shortcode_atts( $defaults, $atts, 'connections_login' );
 
-			wp_login_form( $atts );
+			return wp_login_form( $atts );
+		}
+
+		/**
+		 * Callback function run when using the shortcode.
+		 *
+		 * @access private
+		 * @since  1.0
+		 * @static
+		 * @uses   self::loginForm()
+		 * @param  array  $atts    The shortcode attributes array.
+		 * @param  string $content
+		 * @param  string $tag     The shortcode tag.
+		 *
+		 * @return string
+		 */
+		public static function shortcode( $atts, $content = '', $tag = 'connections_login' ) {
+
+			if ( is_user_logged_in() ) return;
+
+			// The wp_login_form() must return the form in shortcodes.
+			$atts['echo'] = FALSE;
+
+			return self::loginForm( $atts );
+		}
+
+		/**
+		 * Renders the login form content block.
+		 *
+		 * Called by the cn_meta_output_field-login_form action in cnOutput->getMetaBlock().
+		 *
+		 * @access  private
+		 * @since  1.0
+		 * @static
+		 * @uses   self::loginForm()
+		 * @param  object $entry          An instance of the cnEntry object.
+		 * @param  object $shortcode_atts The shortcode $atts array.
+		 * @param  array  $template       An instance of the cnTemplate object.
+		 *
+		 * @return string
+		 */
+		public static function block( $entry, $shortcode_atts = array(), $template = FALSE ) {
+
+			if ( is_user_logged_in() ) return;
+
+			// The wp_login_form() must echo the form in the content block.
+			$shortcode_atts['echo'] = TRUE;
+
+			self::loginForm( $shortcode_atts );
 		}
 
 	}

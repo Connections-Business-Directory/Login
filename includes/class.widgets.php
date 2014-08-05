@@ -95,7 +95,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 			$result = $instance->retrieve->entries( array( 'slug' => urldecode( get_query_var( 'cn-entry-slug' ) ) ) );
 
 			// Setup the entry object
-			$entry = new cnEntry( $result[0] );
+			// $entry = new cnEntry( $result[0] );
 
 			// Extract $before_widget, $after_widget, $before_title and $after_title.
 			extract( $args );
@@ -112,7 +112,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 
 			// Display the income level.
-			Connections_Login::block( $entry );
+			Connections_Login::loginForm();
 
 			echo $after_widget;
 
