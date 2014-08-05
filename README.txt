@@ -15,7 +15,7 @@ Extension for the Connections Business Directory that adds a shortcode and widge
 This is an extension plugin for the [Connections Business Directory Plugin](http://wordpress.org/plugins/connections/) please be sure to install and active it before adding this plugin.
 
 What does this plugin do?
-It adds a content block, a shortcode and a widget to show a login form when a user is not logged into your site.
+It adds an entry content block, a shortcode and a widget which displays a login form when a user is not logged into your site.
 
 Ok, great, but how does this benefit me?
 Well, if you have the directory setup to require login, you can add the `[connections_login]` shortcode to the login required message setting (or any page you want, the shortcode is not limited to this setting). When it is added and the user is not logged in and visit your directory, they'll be shown your message plus the login form.
