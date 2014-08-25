@@ -46,7 +46,7 @@ Here are other great extensions that enhance your expirence with the Connections
 1. [Download the plugin](http://wordpress.org/plugins/connections-business-directory-login/) and save it to you computer.
 2. Navigate to the `Add New` sub-page under the Plugins admin page.
 3. Click the `Upload` link.
-4. Select `connections-business-directory-login.1.0.zip` from where you save the plugin zip file on your computer.
+4. Select `connections-business-directory-login.zip` from where you save the plugin zip file on your computer.
 5. Click the `Install Now` button.
 6. Lastly click the `Activate Plugin` link to activate the plugin.
 
