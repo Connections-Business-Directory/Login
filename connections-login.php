@@ -39,14 +39,9 @@ if ( ! class_exists('Connections_Login') ) {
 			self::defineConstants();
 			self::loadDependencies();
 
-			/*
-			 * Load translation. NOTE: This should be ran on the init action hook because
-			 * function calls for translatable strings, like __() or _e(), execute before
-			 * the language files are loaded will not be loaded.
-			 *
-			 * NOTE: Any portion of the plugin w/ translatable strings should be bound to the init action hook or later.
-			 */
-			add_action( 'init', array( __CLASS__ , 'loadTextdomain' ) );
+			// This should run on the `plugins_loaded` action hook. Since the extension loads on the
+			// `plugins_loaded action hook, call immediately.
+			self::loadTextdomain();
 
 			// Add the business hours option to the admin settings page.
 			// This is also required so it'll be rendered by $entry->getContentBlock( 'login_form' ).
