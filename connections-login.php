@@ -51,7 +51,7 @@ if ( ! class_exists('Connections_Login') ) {
 			add_action( 'cn_entry_output_content-login_form', array( __CLASS__, 'block' ), 10, 3 );
 
 			// Register the widget.
-			add_action( 'widgets_init', create_function( '', 'register_widget( "CN_Login_Form_Widget" );' ) );
+			add_action( 'widgets_init', array( 'CN_Login_Form_Widget', 'register' ) );
 
 			// Register the shortcode.
 			add_shortcode( 'connections_login', array( __CLASS__, 'shortcode' ) );
