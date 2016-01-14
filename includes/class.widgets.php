@@ -76,12 +76,11 @@ class CN_Login_Form_Widget extends WP_Widget {
 	/**
 	 * Function for displaying the widget on the page.
 	 *
-	 * @access  private
+	 * @access private
 	 * @since  1.0
-	 * @param  array $args
-	 * @param  array $instance
 	 *
-	 * @return string
+	 * @param array $args
+	 * @param array $option
 	 */
 	public function widget( $args, $option ) {
 
@@ -97,7 +96,12 @@ class CN_Login_Form_Widget extends WP_Widget {
 			// Setup the entry object
 			// $entry = new cnEntry( $result[0] );
 
-			// Extract $before_widget, $after_widget, $before_title and $after_title.
+			/**
+			 * @var string $before_widget
+			 * @var string $after_widget
+			 * @var string $before_title
+			 * @var string $after_title
+			 */
 			extract( $args );
 
 			// Setup the default widget options if they were not set when they were added to the sidebar;
@@ -111,7 +115,6 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 			echo $before_title . $title . $after_title;
 
-			// Display the income level.
 			Connections_Login::loginForm();
 
 			echo $after_widget;

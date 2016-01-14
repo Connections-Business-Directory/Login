@@ -142,7 +142,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @access private
 		 * @since  1.0
 		 * @static
-		 * @param  array  $blocks An associtive array containing the registered content block settings options.
+		 * @param  array  $blocks An associative array containing the registered content block settings options.
 		 *
 		 * @return array
 		 */
@@ -220,9 +220,9 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @since  1.0
 		 * @static
 		 * @uses   self::loginForm()
-		 * @param  object $entry          An instance of the cnEntry object.
-		 * @param  object $shortcode_atts The shortcode $atts array.
-		 * @param  array  $template       An instance of the cnTemplate object.
+		 * @param  object      $entry          An instance of the cnEntry object.
+		 * @param  array       $shortcode_atts The shortcode $atts array.
+		 * @param  cnTemplate  $template       An instance of the cnTemplate object.
 		 *
 		 * @return string
 		 */
