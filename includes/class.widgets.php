@@ -700,7 +700,16 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 			foreach ( $links as $id => $link ) {
 
-				echo '<li class="' . esc_attr( $id ) . '-link"><a href="' . esc_url( Connections_Login::replaceTokens( $link['url'], 'url' ) ) . '">' . esc_html( Connections_Login::replaceTokens( $link['text'] ) ) . '</a></li>';
+				$anchor = apply_filters(
+					'cn_login_widget_link_anchor',
+					'<a href="' . esc_url( Connections_Login::replaceTokens( $link['url'], 'url' ) ) . '">' . esc_html( Connections_Login::replaceTokens( $link['text'] ) ) . '</a>',
+					$id,
+					$link,
+					$context,
+					$this
+				);
+
+				echo '<li class="' . esc_attr( $id ) . '-link">' . $anchor . '</li>';
 			}
 
 			echo '</ul>';
