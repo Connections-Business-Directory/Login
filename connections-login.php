@@ -7,13 +7,13 @@
  * @author    Steven A. Zahm
  * @license   GPL-2.0+
  * @link      http://connections-pro.com
- * @copyright 2014 Steven A. Zahm
+ * @copyright 2016 Steven A. Zahm
  *
  * @wordpress-plugin
  * Plugin Name:       Connections Login
  * Plugin URI:        http://connections-pro.com
- * Description:       An extension for the Connections plugin which adds login content box and a widget for a single entry page.
- * Version:           1.1
+ * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
+ * Version:           2.0
  * Author:            Steven A. Zahm
  * Author URI:        http://connections-pro.com
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! class_exists('Connections_Login') ) {
 	class Connections_Login {
 
 		// Define version.
-		const VERSION = '1.1';
+		const VERSION = '2.0';
 
 		public function __construct() {
 
@@ -49,6 +49,9 @@ if ( ! class_exists('Connections_Login') ) {
 
 			// Add the action that'll be run when calling $entry->getContentBlock( 'login_form' ) from within a template.
 			add_action( 'cn_entry_output_content-login_form', array( __CLASS__, 'block' ), 10, 3 );
+
+			// Enqueue the scripts.
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueueScripts' ) );
 
 			// Register the widget.
 			add_action( 'widgets_init', array( 'CN_Login_Form_Widget', 'register' ) );
@@ -154,12 +157,245 @@ if ( ! class_exists('Connections_Login') ) {
 		}
 
 		/**
+		 * Register and enqueue CSS and javascript files for frontend.
+		 *
+		 * @access private
+		 * @since  2.0
+		 * @static
+		 */
+		public static function enqueueScripts() {
+
+			// If SCRIPT_DEBUG is set and TRUE load the non-minified JS files, otherwise, load the minified files.
+			$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+
+			wp_enqueue_style( 'cn-login-public', CNL_URL . "assets/css/cn-login-user$min.css", array( ), self::VERSION );
+		}
+
+		/**
+		 * The list of supported tokens that can be replaced.
+		 *
+		 * @access private
+		 * @since  2.0
+		 * @static
+		 *
+		 * @return array
+		 */
+		public static function supportedTokens() {
+
+			$tokens = array(
+				'%username%',
+				'%userid%',
+				'%firstname%',
+				'%lastname%',
+				'%nickname%',
+				'%display_name%',
+				'%name%',
+				'%avatar%',
+				'%admin_url%',
+				'%login_url%',
+				'%logout_url%',
+				'%profile_url%',
+			);
+
+			if ( function_exists( 'bp_loggedin_user_domain' ) ) $tokens[] = '%buddypress_profile_url%';
+			if ( function_exists( 'bbp_get_user_profile_url' ) ) $tokens[] = '%bbpress_profile_url%';
+			if ( function_exists( 'bbp_user_topics_created_url' ) ) $tokens[] = '%bbpress_topics_created_url%';
+			if ( function_exists( 'bbp_get_user_replies_created_url' ) ) $tokens[] = '%bbpress_replies_created_url%';
+			if ( function_exists( 'bbp_get_favorites_permalink' ) ) $tokens[] = '%bbpress_favorites_url%';
+			if ( function_exists( 'bbp_get_subscriptions_permalink' ) ) $tokens[] = '%bbpress_subscriptions_url%';
+
+			/**
+			 * Filter the add or remove the supported token.
+			 *
+			 * @since 2.0
+			 *
+			 * @param array $tokens
+			 */
+			return apply_filters( 'cn_login_supported_tokens', $tokens );
+		}
+
+		/**
+		 * Replace tokens with the corresponding string.
+		 *
+		 * @access private
+		 * @since  2.0
+		 * @static
+		 *
+		 * @param string       $string
+		 * @param array|string $context The context in which the tokens should be replaced.
+		 *                              Default: array( 'string', 'url' )
+		 *                              Valid: string | url | array( 'string', 'url' )
+		 * @param array        $atts {
+		 *     Optional. An array of arguments.
+		 *
+		 *     @type string $login_url  The WordPress log in URL.
+		 *                              Default: URL returned from `wp_login_url()`
+		 *     @type string $logout_url The WordPress logout URL.
+		 *                              Default: URL returned from `wp_logout_url()`
+		 * }
+		 *
+		 * @return string
+		 */
+		public static function replaceTokens( $string, $context = array( 'string', 'url' ), $atts = array() ) {
+
+			$defaults = array(
+				'login_url'  => wp_login_url(),
+				'logout_url' => wp_logout_url(),
+			);
+
+			$atts = wp_parse_args( $atts, $defaults );
+
+			$user = wp_get_current_user();
+
+			if ( ! is_array( $context ) ) {
+
+				$context = array( $context );
+			}
+
+			if ( $user ) {
+
+				if ( in_array( 'string', $context ) ) {
+
+					$string = str_replace(
+						array(
+							'%username%',
+							'%userid%',
+							'%firstname%',
+							'%lastname%',
+							'%nickname%',
+							'%display_name%',
+							'%name%',
+							'%avatar%',
+						),
+						array(
+							$user->user_login,
+							$user->ID,
+							$user->first_name,
+							$user->last_name,
+							$user->nickname,
+							$user->display_name,
+							trim( $user->first_name . ' ' . $user->last_name ),
+							get_avatar( $user->ID, apply_filters( 'cn_login_avatar_size', 38 ) ),
+						),
+						$string
+					);
+				}
+
+				if ( in_array( 'url', $context ) ) {
+
+					$string = str_replace(
+						array(
+							'%profile_url%',
+						),
+						array(
+							get_edit_profile_url( $user->ID ),
+						),
+						$string
+					);
+
+					// BuddyPress
+					if ( function_exists( 'bp_loggedin_user_domain' ) ) {
+
+						$string = str_replace(
+							array( '%buddypress_profile_url%' ),
+							array( bp_loggedin_user_domain() ),
+							$string
+						);
+					}
+
+					// bbPress
+					if ( function_exists( 'bbp_get_user_profile_url' ) ) {
+
+						$string = str_replace(
+							array( '%bbpress_profile_url%' ),
+							array( bbp_get_user_profile_url( $user->ID ) ),
+							$string
+						);
+					}
+
+					if ( function_exists( 'bbp_user_topics_created_url' ) ) {
+
+						$string = str_replace(
+							array( '%bbpress_topics_created_url%' ),
+							array( bbp_user_topics_created_url( $user->ID ) ),
+							$string
+						);
+					}
+
+					if ( function_exists( 'bbp_get_user_replies_created_url' ) ) {
+
+						$string = str_replace(
+							array( '%bbpress_replies_created_url%' ),
+							array( bbp_get_user_replies_created_url( $user->ID ) ),
+							$string
+						);
+					}
+
+					if ( function_exists( 'bbp_get_favorites_permalink' ) ) {
+
+						$string = str_replace(
+							array( '%bbpress_favorites_url%' ),
+							array( bbp_get_favorites_permalink( $user->ID ) ),
+							$string
+						);
+					}
+
+					if ( function_exists( 'bbp_get_subscriptions_permalink' ) ) {
+
+						$string = str_replace(
+							array( '%bbpress_subscriptions_url%' ),
+							array( bbp_get_subscriptions_permalink( $user->ID ) ),
+							$string
+						);
+					}
+				}
+			}
+
+			if ( in_array( 'url', $context ) ) {
+
+				//$logout_redirect = wp_logout_url( empty( $this->instance['logout_redirect_url'] ) ? $this->current_url( 'nologout' ) : $this->instance['logout_redirect_url'] );
+
+				$string = str_replace(
+					array( '%admin_url%', '%logout_url%', '%login_url%' ),
+					array(
+						untrailingslashit( admin_url() ),
+						apply_filters( 'cn_login_logout_url', $atts['logout_url'] ),
+						apply_filters( 'cn_login_login_url', $atts['login_url'] ),
+					),
+					$string
+				);
+			}
+
+			$string = do_shortcode( $string );
+
+			/**
+			 * Filter the string or URL.
+			 *
+			 * @since 2.0
+			 *
+			 * @param string       $string
+			 * @param array|string $context The context in which the tokens should be replaced.
+			 *                              Default: array( 'string', 'url' )
+			 *                              Valid: string | url | array( 'string', 'url' )
+			 * @param array        $atts {
+			 *     Optional. An array of arguments.
+			 *
+			 *     @type string $login_url  The WordPress log in URL.
+			 *                              Default: URL returned from `wp_login_url()`
+			 *     @type string $logout_url The WordPress logout URL.
+			 *                              Default: URL returned from `wp_logout_url()`
+			 * }
+			 */
+			return apply_filters( 'cn_login_replace_tokens', $string, $context, $atts );
+		}
+
+		/**
 		 * Echos or returns the core WP login form.
 		 *
 		 * @access private
-		 * @since  1.0
 		 * @static
-		 * @uses   wp_login_form()
+		 * @since  1.0
+		 *
 		 * @param  array  $atts An associative array passed to wp_login_form()
 		 *
 		 * @return string
@@ -203,7 +439,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 */
 		public static function shortcode( $atts, $content = '', $tag = 'connections_login' ) {
 
-			if ( is_user_logged_in() ) return;
+			if ( is_user_logged_in() ) return '';
 
 			// The wp_login_form() must return the form in shortcodes.
 			$atts['echo'] = FALSE;
