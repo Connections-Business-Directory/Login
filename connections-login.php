@@ -317,7 +317,7 @@ if ( ! class_exists('Connections_Login') ) {
 
 						$string = str_replace(
 							array( '%bbpress_topics_created_url%' ),
-							array( bbp_user_topics_created_url( $user->ID ) ),
+							array( bbp_get_user_topics_created_url( $user->ID ) ),
 							$string
 						);
 					}
