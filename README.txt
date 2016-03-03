@@ -69,7 +69,7 @@ None yet...
 
 == Changelog ==
 
-= 1.1 03/02/2016 =
+= 2.0 03/02/2016 =
 * FEATURE: Option to configure widget to be visible site wide in the sidebar or limited to only the entry detail/profile page in Connections.
 * FEATURE: Configurable widget title based on if user is logged in or not.
 * FEATURE: Option to disable the "Remember me" checkbox in the login form.
