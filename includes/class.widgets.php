@@ -634,7 +634,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 				$links['logout'] = array(
 					'text' => esc_html__( 'Logout', 'connections_login' ),
-					'url'  => apply_filters( 'cn_login_logout_url', wp_logout_url() )
+					'url'  => apply_filters( 'cn_login_logout_url', wp_logout_url( get_permalink() ) )
 				);
 			}
 
@@ -702,7 +702,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 				$anchor = apply_filters(
 					'cn_login_widget_link_anchor',
-					'<a href="' . esc_url( Connections_Login::replaceTokens( $link['url'], 'url' ) ) . '">' . esc_html( Connections_Login::replaceTokens( $link['text'] ) ) . '</a>',
+					'<a href="' . esc_url( Connections_Login::replaceTokens( $link['url'], 'url', array( 'logout_url' => wp_logout_url( get_permalink() ) ) ) ) . '">' . esc_html( Connections_Login::replaceTokens( $link['text'] ) ) . '</a>',
 					$id,
 					$link,
 					$context,
