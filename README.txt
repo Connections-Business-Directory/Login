@@ -69,6 +69,12 @@ None yet...
 
 == Changelog ==
 
+= 2.0.1 03/17/2016 =
+* NEW: Introduce the `cn_login_widget_link_anchor` filter.
+* BUG: Use correct bbPress function to return the user topics created URL.
+* TWEAK: Default logout link redirect URL to the current page.
+* OTHER: Correct version number in changelog section of readme.txt.
+
 = 2.0 03/02/2016 =
 * FEATURE: Option to configure widget to be visible site wide in the sidebar or limited to only the entry detail/profile page in Connections.
 * FEATURE: Configurable widget title based on if user is logged in or not.
