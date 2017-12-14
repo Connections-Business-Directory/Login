@@ -442,9 +442,7 @@ if ( ! class_exists('Connections_Login') ) {
 			if ( is_user_logged_in() ) return '';
 
 			// The wp_login_form() must return the form in shortcodes.
-			$atts['echo'] = FALSE;
-
-			return self::loginForm( $atts );
+			return self::loginForm( array( 'echo' => FALSE ) );
 		}
 
 		/**
