@@ -96,6 +96,9 @@ None yet...
 
 == Changelog ==
 
+= 2.0.2 12/14/2017 =
+* BUG: Prevent PHP warning; "Illegal string offset 'echo'".
+
 = 2.0.1 03/17/2016 =
 * NEW: Introduce the `cn_login_widget_link_anchor` filter.
 * BUG: Use correct bbPress function to return the user topics created URL.
