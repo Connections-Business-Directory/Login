@@ -459,8 +459,6 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @param  object      $entry          An instance of the cnEntry object.
 		 * @param  array       $shortcode_atts The shortcode $atts array.
 		 * @param  cnTemplate  $template       An instance of the cnTemplate object.
-		 *
-		 * @return string
 		 */
 		public static function block( $entry, $shortcode_atts = array(), $template = FALSE ) {
 
