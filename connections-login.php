@@ -7,7 +7,7 @@
  * @author    Steven A. Zahm
  * @license   GPL-2.0+
  * @link      http://connections-pro.com
- * @copyright 2016 Steven A. Zahm
+ * @copyright 2017 Steven A. Zahm
  *
  * @wordpress-plugin
  * Plugin Name:       Connections Login
