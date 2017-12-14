@@ -2,10 +2,10 @@
 Contributors: shazahm1@hotmail.com
 Donate link: http://connections-pro.com/
 Tags: address book, addressbook, business, businesses, business directory, business-directory, business directory plugin, directory plugin, directory widget, church, contact, contacts, connect, connections, directory, directories, member directory, members directory, members directories, people, profile, profiles, shortcode, staff, user, users, wordpress business directory, wordpress directory, wordpress directory plugin, wordpress business directory, login, form, login form, widget, login widget
-Stable tag: 2.0.1
 Requires at least: 4.4
 Tested up to: 4.9
 Requires PHP: 5.3
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
