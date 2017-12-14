@@ -390,19 +390,17 @@ if ( ! class_exists('Connections_Login') ) {
 		}
 
 		/**
-		 * Echos or returns the core WP login form.
+		 * Default values for @see wp_login_form()
 		 *
 		 * @access private
+		 * @since  2.0.2
 		 * @static
-		 * @since  1.0
 		 *
-		 * @param  array  $atts An associative array passed to wp_login_form()
-		 *
-		 * @return string
+		 * @return array
 		 */
-		public static function loginForm( $atts = array() ) {
+		protected static function getLoginFormDefaults() {
 
-			$defaults = array(
+			return array(
 				'echo'           => TRUE,
 				'redirect'       => get_permalink(),
 				'form_id'        => 'loginform',
@@ -418,8 +416,22 @@ if ( ! class_exists('Connections_Login') ) {
 				'value_username' => NULL,
 				'value_remember' => FALSE,
 			);
+		}
 
-			$atts = shortcode_atts( $defaults, $atts, 'connections_login' );
+		/**
+		 * Echos or returns the core WP login form.
+		 *
+		 * @access private
+		 * @static
+		 * @since  1.0
+		 *
+		 * @param  array  $atts An associative array passed to wp_login_form()
+		 *
+		 * @return string
+		 */
+		public static function loginForm( $atts = array() ) {
+
+			$atts = shortcode_atts( self::getLoginFormDefaults(), $atts, 'connections_login' );
 
 			return wp_login_form( $atts );
 		}
@@ -441,8 +453,12 @@ if ( ! class_exists('Connections_Login') ) {
 
 			if ( is_user_logged_in() ) return '';
 
+			$atts = shortcode_atts( self::getLoginFormDefaults(), $atts, 'connections_login' );
+
 			// The wp_login_form() must return the form in shortcodes.
-			return self::loginForm( array( 'echo' => FALSE ) );
+			$atts['echo'] = TRUE;
+
+			return self::loginForm( $atts );
 		}
 
 		/**
@@ -462,10 +478,12 @@ if ( ! class_exists('Connections_Login') ) {
 
 			if ( is_user_logged_in() ) return;
 
-			// The wp_login_form() must echo the form in the content block.
-			$shortcode_atts['echo'] = TRUE;
+			$atts = shortcode_atts( self::getLoginFormDefaults(), $shortcode_atts, 'connections_login' );
 
-			self::loginForm( $shortcode_atts );
+			// The wp_login_form() must echo the form in the content block.
+			$atts['echo'] = TRUE;
+
+			self::loginForm( $atts );
 		}
 
 	}
