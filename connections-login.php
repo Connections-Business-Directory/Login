@@ -13,7 +13,7 @@
  * Plugin Name:       Connections Login
  * Plugin URI:        http://connections-pro.com
  * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
- * Version:           2.0.2
+ * Version:           2.0.3
  * Author:            Steven A. Zahm
  * Author URI:        http://connections-pro.com
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! class_exists('Connections_Login') ) {
 	class Connections_Login {
 
 		// Define version.
-		const VERSION = '2.0.2';
+		const VERSION = '2.0.3';
 
 		public function __construct() {
 
