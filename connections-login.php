@@ -456,7 +456,7 @@ if ( ! class_exists('Connections_Login') ) {
 			$atts = shortcode_atts( self::getLoginFormDefaults(), $atts, 'connections_login' );
 
 			// The wp_login_form() must return the form in shortcodes.
-			$atts['echo'] = TRUE;
+			$atts['echo'] = FALSE;
 
 			return self::loginForm( $atts );
 		}
