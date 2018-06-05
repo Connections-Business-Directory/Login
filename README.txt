@@ -96,6 +96,10 @@ None yet...
 
 == Changelog ==
 
+= 2.0.3 06/05/2018 =
+* BUG: Shortcode returns content, not echo it.
+* DEV: phpDoc update.
+
 = 2.0.2 12/14/2017 =
 * BUG: Prevent PHP warning; "Illegal string offset 'echo'".
 
