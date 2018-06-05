@@ -469,7 +469,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @access  private
 		 * @since  1.0
 		 * @static
-		 * @uses   self::loginForm()
+		 *
 		 * @param  object      $entry          An instance of the cnEntry object.
 		 * @param  array       $shortcode_atts The shortcode $atts array.
 		 * @param  cnTemplate  $template       An instance of the cnTemplate object.
