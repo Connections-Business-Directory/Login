@@ -694,7 +694,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 		 */
 		do_action( 'cn_login_widget_before_' . $context . '_links', $links, $this );
 
-		if ( ! empty( $links ) && is_array( $links ) && sizeof( 0 < $links ) ) {
+		if ( ! empty( $links ) && is_array( $links ) && 0 < count(  $links ) ) {
 
 			echo '<ul class="pagenav cn_login_links">';
 
