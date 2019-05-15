@@ -2,7 +2,7 @@
 /**
  * An extension for the Connections plugin which adds login content box and a widget for a single entry page.
  *
- * @package   Connections Login
+ * @package   Connections Business Directory Extension - Login
  * @category  Extension
  * @author    Steven A. Zahm
  * @license   GPL-2.0+
@@ -10,7 +10,7 @@
  * @copyright 2019 Steven A. Zahm
  *
  * @wordpress-plugin
- * Plugin Name:       Connections Login
+ * Plugin Name:       Connections Business Directory Extension - Login
  * Plugin URI:        http://connections-pro.com
  * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
  * Version:           2.0.3
