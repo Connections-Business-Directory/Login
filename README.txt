@@ -96,6 +96,16 @@ None yet...
 
 == Changelog ==
 
+= 2.1 05/15/2019 =
+* BUG: Check if variable is an array before counting to prevent PHP notice.
+* I18N: Update POT file.
+* I18N: Update Spanish (Spain) translation.
+* I18N: Add French (France) translation.
+* OTHER: Update copyright year.
+* OTHER: Update plugin header name to match naming conventions used in other addons.
+* OTHER: Update readme tags.
+* OTHER: Update readme meta tags; requires, tested and minimum PHP version.
+
 = 2.0.3 06/05/2018 =
 * BUG: Shortcode returns content, not echo it.
 * DEV: phpDoc update.
@@ -163,3 +173,9 @@ None yet...
 
 = 1.0 08/08/2014 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 2.1 =
+It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+
