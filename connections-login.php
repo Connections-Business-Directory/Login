@@ -400,7 +400,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 */
 		protected static function getLoginFormDefaults() {
 
-			return array(
+			$defaults = array(
 				'echo'           => TRUE,
 				'redirect'       => get_permalink(),
 				'form_id'        => 'loginform',
@@ -416,6 +416,13 @@ if ( ! class_exists('Connections_Login') ) {
 				'value_username' => NULL,
 				'value_remember' => FALSE,
 			);
+
+			if ( empty( $defaults['redirect'] ) ) {
+
+				$defaults['redirect'] = get_home_url();
+			}
+
+			return $defaults;
 		}
 
 		/**
