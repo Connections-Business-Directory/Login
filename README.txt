@@ -96,6 +96,12 @@ None yet...
 
 == Changelog ==
 
+= 2.2 06/23/2020 =
+* TWEAK: If `get_permalink()` returns an empty URL, then default to `get_home_url()` for the login redirect parameter.
+* OTHER: Update copyright year.
+* OTHER: Update URLs from `http` to `https`.
+* OTHER: Update "Test up to" version 5.4.
+
 = 2.1 05/15/2019 =
 * BUG: Check if variable is an array before counting to prevent PHP notice.
 * I18N: Update POT file.
@@ -178,4 +184,7 @@ None yet...
 
 = 2.1 =
 It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+
+= 2.2 =
+It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
 
