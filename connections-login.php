@@ -6,18 +6,18 @@
  * @category  Extension
  * @author    Steven A. Zahm
  * @license   GPL-2.0+
- * @link      http://connections-pro.com
+ * @link      https://connections-pro.com
  * @copyright 2020 Steven A. Zahm
  *
  * @wordpress-plugin
  * Plugin Name:       Connections Business Directory Extension - Login
- * Plugin URI:        http://connections-pro.com
+ * Plugin URI:        https://connections-pro.com
  * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
  * Version:           2.1
  * Author:            Steven A. Zahm
  * Author URI:        http://connections-pro.com
  * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       connections_login
  * Domain Path:       /languages
  */
