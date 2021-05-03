@@ -477,7 +477,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @since  1.0
 		 * @static
 		 *
-		 * @param  object      $entry          An instance of the cnEntry object.
+		 * @param  cnEntry     $entry          An instance of the cnEntry object.
 		 * @param  array       $shortcode_atts The shortcode $atts array.
 		 * @param  cnTemplate  $template       An instance of the cnTemplate object.
 		 */
@@ -501,7 +501,7 @@ if ( ! class_exists('Connections_Login') ) {
 	 * @access public
 	 * @since 1.0
 	 *
-	 * @return mixed object | bool
+	 * @return Connections_Login|false
 	 */
 	function Connections_Login() {
 
