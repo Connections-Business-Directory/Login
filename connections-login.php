@@ -15,7 +15,7 @@
  * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
  * Version:           2.2
  * Author:            Steven A. Zahm
- * Author URI:        http://connections-pro.com
+ * Author URI:        https://connections-pro.com
  * License:           GPL-2.0+
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       connections_login
