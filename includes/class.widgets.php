@@ -162,8 +162,6 @@ class CN_Login_Form_Widget extends WP_Widget {
 	 * @access private
 	 * @since  1.0
 	 * @param  array $instance
-	 *
-	 * @return string
 	 */
 	public function form( $instance ) {
 
