@@ -21,7 +21,7 @@ It adds an [entry content block](http://connections-pro.com/documentation/login/
 Ok, great, but how does this benefit me?
 Well, if you have the directory setup to require login, you can add the [[connections_login] shortcode](http://connections-pro.com/documentation/login/#Shortcode) to the [login required message setting](http://connections-pro.com/documentation/settings/#Require_Login) (or any page you want, the shortcode is not limited to this setting). When it is added and the user is not logged in and visit your directory, they'll be shown your message plus the login form.
 
-The content block login form and the login widget are best used with [Link](http://connections-pro.com/add-on/link/) installed and activated. You can setup the login form content block to be shown on a single entry, that way when a user visits the page and they are not logged in, they'll be shown a login form right on their page. Alternatively, you could use the widget which will only be displayed on the single entry page when a user is not logged in. It's your choice, you could use either one or both.
+The content block login form and the login widget are best used with [Link](http://connections-pro.com/add-on/link/) installed and activated. You can set up the login form content block to be shown on a single entry, that way when a user visits the page, and they are not logged in, they'll be shown a login form right on their page. Alternatively, you could use the widget which will only be displayed on the single entry page when a user is not logged in. It's your choice, you could use either one or both.
 
 [Checkout the screenshots.](http://connections-pro.com/add-on/login/)
 
@@ -190,10 +190,10 @@ None yet...
 == Upgrade Notice ==
 
 = 2.1 =
-It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+It is recommended to back up before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
 
 = 2.2 =
-It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
+It is recommended to back up before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
 
 = 2.2.1 =
 It is recommended to backup before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
