@@ -96,6 +96,12 @@ None yet...
 
 == Changelog ==
 
+= 2.2.2 12/23/2021 =
+* TWEAK: Update widget save settings so checkboxes are properly saved in WordPress >= 5.8.
+* DEV: Do not evaluate widget instance setting when setting form field value.
+* OTHER: Correct misspelling.
+* DEV: phpDoc correction.
+
 = 2.2.1 05/03/2021 =
 * TWEAK: Remove use of `create_function()`.
 * OTHER: Update copyright year.
@@ -196,4 +202,7 @@ It is recommended to back up before updating. Requires WordPress >= 4.7.12 and P
 It is recommended to back up before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
 
 = 2.2.1 =
-It is recommended to backup before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
+It is recommended to back up before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
+
+= 2.2.2 =
+It is recommended to back up before updating. Requires WordPress >= 5.2 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
