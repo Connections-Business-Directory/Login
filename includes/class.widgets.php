@@ -190,7 +190,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'after'  => '</p>',
 				'layout' => '%field% %label%',
 			),
-			$instance['display_entry_only'] ? '1' : '0'
+			$instance['display_entry_only']
 		);
 
 		/**
@@ -244,7 +244,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'after'  => '</p>',
 				'layout' => '%field% %label%',
 			),
-			$instance['display_remember_me_checkbox'] ? '1' : '0'
+			$instance['display_remember_me_checkbox']
 		);
 
 		cnHTML::field(
@@ -258,7 +258,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'after'  => '</p>',
 				'layout' => '%field% %label%',
 			),
-			$instance['display_lost_password_link'] ? '1' : '0'
+			$instance['display_lost_password_link']
 		);
 
 		if ( get_option('users_can_register') ) {
@@ -274,7 +274,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 					'after'  => '</p>',
 					'layout' => '%field% %label%',
 				),
-				$instance['display_register_link'] ? '1' : '0'
+				$instance['display_register_link']
 			);
 		}
 
@@ -340,7 +340,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'layout'   => '%label% %field%',
 				'options'  => $this->imageTypes(),
 			),
-			isset( $instance['image'] ) ? $instance['image'] : 'none'
+			$instance['image']
 		);
 
 		cnHTML::input(
@@ -355,7 +355,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'after'  => 'px</p>',
 				'layout'   => '%label% %field%',
 			),
-			isset( $instance['image_size'] ) ? absint( $instance['image_size'] ) : 38
+			absint( $instance['image_size'] )
 		);
 
 		cnHTML::field(
@@ -369,7 +369,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'after'  => '</p>',
 				'layout' => '%field% %label%',
 			),
-			$instance['display_profile_link'] ? '1' : '0'
+			$instance['display_profile_link']
 		);
 
 		cnHTML::field(
@@ -383,7 +383,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'after'  => '</p>',
 				'layout' => '%field% %label%',
 			),
-			$instance['display_logout_link'] ? '1' : '0'
+			$instance['display_logout_link']
 		);
 
 		cnHTML::textarea(
