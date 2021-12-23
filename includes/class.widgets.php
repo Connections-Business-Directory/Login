@@ -1,6 +1,6 @@
 <?php
 /**
- * Static class for registing and displaying the widget.
+ * Static class for registering and displaying the widget.
  *
  * @package     Connections Login Form
  * @subpackage  Widget
