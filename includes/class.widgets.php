@@ -12,6 +12,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use Connections_Directory\Utility\_array;
+
 class CN_Login_Form_Widget extends WP_Widget {
 
 	/**
@@ -126,20 +128,20 @@ class CN_Login_Form_Widget extends WP_Widget {
 	public function update( $new, $old ) {
 
 		// Common Settings
-		$new['display_entry_only'] = isset( $new['display_entry_only'] ) ? '1' : '0';
+		$new['display_entry_only'] = _array::get( $new, 'display_entry_only', '0' );
 
 		// Logged-out Settings
 		$new['title-logged-out']             = sanitize_text_field( $new['title-logged-out'] );
 		$new['links-logged-out']             = wp_kses_data( $new['links-logged-out'] );
-		$new['display_remember_me_checkbox'] = isset( $new['display_remember_me_checkbox'] ) ? '1' : '0';
-		$new['display_lost_password_link']   = isset( $new['display_lost_password_link'] ) ? '1' : '0';
-		$new['display_register_link']        = isset( $new['display_register_link'] ) ? '1' : '0';
+		$new['display_remember_me_checkbox'] = _array::get( $new, 'display_remember_me_checkbox', '0' );
+		$new['display_lost_password_link']   = _array::get( $new, 'display_lost_password_link', '0' );
+		$new['display_register_link']        = _array::get( $new, 'display_register_link', '0' );
 
 		// Logged-in Settings
 		$new['title-logged-in']      = sanitize_text_field( $new['title-logged-in'] );
 		$new['links-logged-in']      = wp_kses_data( $new['links-logged-in'] );
-		$new['display_profile_link'] = isset( $new['display_profile_link'] ) ? '1' : '0';
-		$new['display_logout_link']  = isset( $new['display_logout_link'] ) ? '1' : '0';
+		$new['display_profile_link'] = _array::get( $new, 'display_profile_link', '0' );
+		$new['display_logout_link']  = _array::get( $new, 'display_logout_link', '0' );
 		$new['image']                = isset( $new['image'] ) && in_array( $new['image'], array_keys( $this->imageTypes() ) ) ? $new['image'] : 'none';
 		$new['image_size']           = isset( $new['image_size'] ) ? absint( $new['image_size'] ) : 38;
 
