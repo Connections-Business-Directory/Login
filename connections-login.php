@@ -446,13 +446,12 @@ if ( ! class_exists('Connections_Login') ) {
 		/**
 		 * Callback function run when using the shortcode.
 		 *
-		 * @access private
-		 * @since  1.0
-		 * @static
-		 * @uses   self::loginForm()
-		 * @param  array  $atts    The shortcode attributes array.
-		 * @param  string $content
-		 * @param  string $tag     The shortcode tag.
+		 * @internal
+		 * @since 1.0
+
+		 * @param array  $atts    The shortcode attributes array.
+		 * @param string $content
+		 * @param string $tag     The shortcode tag.
 		 *
 		 * @return string
 		 */
@@ -473,13 +472,12 @@ if ( ! class_exists('Connections_Login') ) {
 		 *
 		 * Called by the cn_meta_output_field-login_form action in cnOutput->getMetaBlock().
 		 *
-		 * @access  private
-		 * @since  1.0
-		 * @static
+		 * @internal
+		 * @since 1.0
 		 *
-		 * @param  cnEntry     $entry          An instance of the cnEntry object.
-		 * @param  array       $shortcode_atts The shortcode $atts array.
-		 * @param  cnTemplate  $template       An instance of the cnTemplate object.
+		 * @param cnEntry    $entry          An instance of the cnEntry object.
+		 * @param array      $shortcode_atts The shortcode $atts array.
+		 * @param cnTemplate $template       An instance of the cnTemplate object.
 		 */
 		public static function block( $entry, $shortcode_atts = array(), $template = FALSE ) {
 
