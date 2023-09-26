@@ -409,7 +409,7 @@ if ( ! class_exists('Connections_Login') ) {
 				'label_username' => __( 'Username', 'connections_login' ),
 				'label_password' => __( 'Password', 'connections_login' ),
 				'label_remember' => __( 'Remember Me', 'connections_login' ),
-				'label_log_in'   => __( 'Login', 'connections_login' ),
+				'label_log_in'   => __( 'Log In', 'connections_login' ),
 				'id_username'    => 'user_login',
 				'id_password'    => 'user_pass',
 				'id_remember'    => 'rememberme',
