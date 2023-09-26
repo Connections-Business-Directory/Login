@@ -46,7 +46,7 @@ if ( ! class_exists('Connections_Login') ) {
 			self::loadTextdomain();
 
 			// Add the business hours option to the admin settings page.
-			// This is also required so it'll be rendered by $entry->getContentBlock( 'login_form' ).
+			// This is also required, so it'll be rendered by $entry->getContentBlock( 'login_form' ).
 			add_filter( 'cn_content_blocks', array( __CLASS__, 'settingsOption') );
 
 			// Add the action that'll be run when calling $entry->getContentBlock( 'login_form' ) from within a template.
@@ -521,7 +521,7 @@ if ( ! class_exists('Connections_Login') ) {
 
 	/**
 	 * Since Connections loads at default priority 10, and this extension is dependent on Connections,
-	 * we'll load with priority 11 so we know Connections will be loaded and ready first.
+	 * we'll load with priority 11, so we know Connections will be loaded and ready first.
 	 */
 	add_action( 'plugins_loaded', 'Connections_Login', 11 );
 
