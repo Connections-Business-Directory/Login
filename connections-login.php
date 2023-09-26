@@ -392,11 +392,10 @@ if ( ! class_exists('Connections_Login') ) {
 		}
 
 		/**
-		 * Default values for @see wp_login_form()
+		 * Default parameters for the login form.
 		 *
-		 * @access private
-		 * @since  2.0.2
-		 * @static
+		 * @access internal
+		 * @since 2.0.2
 		 *
 		 * @return array
 		 */
