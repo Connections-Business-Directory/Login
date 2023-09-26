@@ -429,11 +429,9 @@ if ( ! class_exists('Connections_Login') ) {
 		/**
 		 * Echos or returns the core WP login form.
 		 *
-		 * @access private
-		 * @static
-		 * @since  1.0
+		 * @since 1.0
 		 *
-		 * @param  array  $atts An associative array passed to wp_login_form()
+		 * @param array $atts An associative array passed to wp_login_form()
 		 *
 		 * @return string
 		 */
