@@ -31,7 +31,40 @@ if ( ! class_exists('Connections_Login') ) {
 		// Define version.
 		const VERSION = '2.2.2';
 
+		/**
+		 * @var string The absolute path this file.
+		 *
+		 * @since 2.3
+		 */
+		private $file = '';
+
+		/**
+		 * @var string The URL to the plugin's folder.
+		 *
+		 * @since 2.3
+		 */
+		private $url = '';
+
+		/**
+		 * @var string The absolute path to this plugin's folder.
+		 *
+		 * @since 2.3
+		 */
+		private $path = '';
+
+		/**
+		 * @var string The basename of the plugin.
+		 *
+		 * @since 2.3
+		 */
+		private $basename = '';
+
 		public function __construct() {
+
+			$this->file     = __FILE__;
+			$this->url      = plugin_dir_url( $this->file );
+			$this->path     = plugin_dir_path( $this->file );
+			$this->basename = plugin_basename( $this->file );
 
 			self::defineConstants();
 			self::loadDependencies();
