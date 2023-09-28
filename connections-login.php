@@ -69,9 +69,15 @@ if ( ! class_exists('Connections_Login') ) {
 			self::defineConstants();
 			self::loadDependencies();
 
-			// This should run on the `plugins_loaded` action hook. Since the extension loads on the
-			// `plugins_loaded action hook, call immediately.
-			self::loadTextdomain();
+			/**
+			 * This should run on the `plugins_loaded` action hook. Since the extension loads on the
+			 * `plugins_loaded` action hook, load immediately.
+			 */
+			cnText_Domain::register(
+				'connections_login',
+				$this->basename,
+				'load'
+			);
 
 			// Add the business hours option to the admin settings page.
 			// This is also required, so it'll be rendered by $entry->getContentBlock( 'login_form' ).
@@ -119,53 +125,6 @@ if ( ! class_exists('Connections_Login') ) {
 		private static function loadDependencies() {
 
 			require_once( CNL_PATH . 'includes/class.widgets.php' );
-		}
-
-		/**
-		 * Load the plugin translation.
-		 *
-		 * Credit: Adapted from Ninja Forms / Easy Digital Downloads.
-		 *
-		 * @access private
-		 * @since  1.0
-		 * @static
-		 *
-		 * @uses   apply_filters()
-		 * @uses   get_locale()
-		 * @uses   load_textdomain()
-		 * @uses   load_plugin_textdomain()
-		 */
-		public static function loadTextdomain() {
-
-			// Plugin textdomain. This should match the one set in the plugin header.
-			$domain = 'connections_login';
-
-			// Set filter for plugin's languages directory
-			$languagesDirectory = apply_filters( "{$domain}_directory", CNL_DIR_NAME . '/languages/' );
-
-			// Traditional WordPress plugin locale filter
-			$locale   = apply_filters( 'plugin_locale', get_locale(), $domain );
-			$fileName = sprintf( '%1$s-%2$s.mo', $domain, $locale );
-
-			// Setup paths to current locale file
-			$local  = $languagesDirectory . $fileName;
-			$global = WP_LANG_DIR . "/{$domain}/" . $fileName;
-
-			if ( file_exists( $global ) ) {
-
-				// Look in global `../wp-content/languages/{$languagesDirectory}/` folder.
-				load_textdomain( $domain, $global );
-
-			} elseif ( file_exists( $local ) ) {
-
-				// Look in local `../wp-content/plugins/{plugin-directory}/languages/` folder.
-				load_textdomain( $domain, $local );
-
-			} else {
-
-				// Load the default language files
-				load_plugin_textdomain( $domain, false, $languagesDirectory );
-			}
 		}
 
 		/**
