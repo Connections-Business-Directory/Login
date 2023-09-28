@@ -26,7 +26,7 @@
 
 if ( ! class_exists('Connections_Login') ) {
 
-	class Connections_Login {
+	final class Connections_Login {
 
 		// Define version.
 		const VERSION = '2.2.2';
