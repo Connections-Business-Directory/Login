@@ -461,11 +461,11 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @internal
 		 * @since 1.0
 		 *
-		 * @param cnEntry    $entry          An instance of the cnEntry object.
-		 * @param array      $shortcode_atts The shortcode $atts array.
-		 * @param cnTemplate $template       An instance of the cnTemplate object.
+		 * @param cnEntry    $entry    An instance of the cnEntry object.
+		 * @param array      $atts     The shortcode $atts array.
+		 * @param cnTemplate $template An instance of the cnTemplate object.
 		 */
-		public static function block( $entry, $shortcode_atts = array(), $template = FALSE ) {
+		public static function block( $entry, $atts = array(), $template = FALSE ) {
 
 			if ( is_user_logged_in() ) return;
 
