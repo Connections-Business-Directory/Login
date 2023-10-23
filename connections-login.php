@@ -388,9 +388,14 @@ if ( ! class_exists('Connections_Login') ) {
 		 */
 		protected static function getLoginFormDefaults() {
 
+			$request  = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			$redirect = \Connections_Directory\Request\Redirect::input()
+															   ->setDefault( $request )
+															   ->value();
+
 			$defaults = array(
 				'echo'           => TRUE,
-				'redirect'       => get_permalink(),
+				'redirect'       => $redirect,
 				'form_id'        => 'loginform',
 				'label_username' => __( 'Username', 'connections_login' ),
 				'label_password' => __( 'Password', 'connections_login' ),
@@ -404,11 +409,6 @@ if ( ! class_exists('Connections_Login') ) {
 				'value_username' => NULL,
 				'value_remember' => FALSE,
 			);
-
-			if ( empty( $defaults['redirect'] ) ) {
-
-				$defaults['redirect'] = get_home_url();
-			}
 
 			return $defaults;
 		}
