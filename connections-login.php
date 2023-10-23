@@ -140,7 +140,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 */
 		public static function settingsOption( $blocks ) {
 
-			$blocks['login_form'] = 'Login Form';
+			$blocks['login_form'] = __( 'Login Form', 'connections_login' );
 
 			return $blocks;
 		}
