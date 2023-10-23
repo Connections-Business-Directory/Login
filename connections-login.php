@@ -394,7 +394,6 @@ if ( ! class_exists('Connections_Login') ) {
 															   ->value();
 
 			$defaults = array(
-				'echo'           => TRUE,
 				'redirect'       => $redirect,
 				'form_id'        => 'loginform',
 				'label_username' => __( 'Username', 'connections_login' ),
@@ -419,14 +418,40 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @since 1.0
 		 *
 		 * @param array $atts An associative array passed to wp_login_form()
+		 * @param bool  $echo Whether to echo the form.
 		 *
 		 * @return string
 		 */
-		public static function loginForm( $atts = array() ) {
+		public static function loginForm( array $atts = array(), bool $echo = true ) {
 
 			$atts = shortcode_atts( self::getLoginFormDefaults(), $atts, 'connections_login' );
 
-			return wp_login_form( $atts );
+			\Connections_Directory\Utility\_array::set( $atts, 'remember', $atts['remember'] );
+			\Connections_Directory\Utility\_array::set( $atts, 'submit.id', $atts['id_submit'] );
+			\Connections_Directory\Utility\_array::set( $atts, 'submit.text', $atts['label_log_in'] );
+
+			$form = \Connections_Directory\Form\User_Login::create( $atts );
+
+			$form->setFieldValue( 'log', $atts['value_username'] );
+
+			if ( empty( $atts['redirect'] ) ) {
+
+				$atts['redirect'] = get_home_url();
+			}
+
+			$form->setRedirect( $atts['redirect'] );
+
+			if ( $atts['value_remember'] ) {
+
+				$form->setFieldValue( 'rememberme', '1' );
+			}
+
+			if ( $echo ) {
+
+				$form->render();
+			}
+
+			return $form->getHTML();
 		}
 
 		/**
@@ -445,12 +470,7 @@ if ( ! class_exists('Connections_Login') ) {
 
 			if ( is_user_logged_in() ) return '';
 
-			$atts = shortcode_atts( self::getLoginFormDefaults(), $atts, 'connections_login' );
-
-			// The wp_login_form() must return the form in shortcodes.
-			$atts['echo'] = FALSE;
-
-			return self::loginForm( $atts );
+			return self::loginForm( $atts, false );
 		}
 
 		/**
@@ -468,11 +488,6 @@ if ( ! class_exists('Connections_Login') ) {
 		public static function block( $entry, $atts = array(), $template = FALSE ) {
 
 			if ( is_user_logged_in() ) return;
-
-			$atts = shortcode_atts( self::getLoginFormDefaults(), $shortcode_atts, 'connections_login' );
-
-			// The wp_login_form() must echo the form in the content block.
-			$atts['echo'] = TRUE;
 
 			self::loginForm( $atts );
 		}
