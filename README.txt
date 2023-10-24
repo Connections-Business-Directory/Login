@@ -96,6 +96,18 @@ None yet...
 
 == Changelog ==
 
+= 3.0 10/23/2023 =
+* TWEAK: Remove unnecessary check for the `WPINC` constant.
+* TWEAK: Make `Connections_Login` class `final`.
+* TWEAK: Add `Connections_Login` class properties.
+* TWEAK: Refactor loading the translations to use the `cnText_Domain` class.
+* TWEAK: Refactor `getLoginFormDefaults()` to use `Request\Redirect` to set the default redirect value.
+* TWEAK: Refactor `loginForm()` to utilize `Form\User_Login` instead of `wp_login_form()`.
+* BUG: Ensure the "Login Form" Content Block setting name is translation ready.
+* OTHER: Update plugin header requirements.
+* OTHER: Correct misspelling.
+* DEV: phpDoc corrections.
+
 = 2.2.2 12/23/2021 =
 * TWEAK: Update widget save settings so checkboxes are properly saved in WordPress >= 5.8.
 * DEV: Do not evaluate widget instance setting when setting form field value.
@@ -206,3 +218,6 @@ It is recommended to back up before updating. Requires WordPress >= 5.1 and PHP 
 
 = 2.2.2 =
 It is recommended to back up before updating. Requires WordPress >= 5.2 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
+
+= 3.0 =
+It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
