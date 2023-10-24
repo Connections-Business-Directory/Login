@@ -14,7 +14,7 @@
  * Plugin URI:        https://connections-pro.com
  * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
  * Version:           2.2.2
- * Requires at least: 5.8
+ * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Steven A. Zahm
  * Author URI:        https://connections-pro.com
