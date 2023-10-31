@@ -46,7 +46,7 @@ final class User_Property extends Shortcode {
 	 * @param string $content   The shortcode content.
 	 * @param string $tag       The shortcode tag.
 	 */
-	public function __construct( array $untrusted, string $content = '', string $tag = '' ) {
+	public function __construct( array $untrusted, string $content = '', string $tag = self::TAG ) {
 
 		$this->tag = $tag;
 
