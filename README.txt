@@ -18,6 +18,8 @@ This is an extension plugin for the [Connections Business Directory Plugin](http
 What does this plugin do?
 It adds an [entry content block](http://connections-pro.com/documentation/login/#Content_Block), a [shortcode](http://connections-pro.com/documentation/login/#Shortcode) and a [highly configurable widget](http://connections-pro.com/documentation/login/#Widget) which displays a login form when a user is not logged into your site.
 
+It also adds a `[user_]` shortcode that can be used to display the current user profile information include user meta and the user avatar.
+
 Ok, great, but how does this benefit me?
 Well, if you have the directory setup to require login, you can add the [[connections_login] shortcode](http://connections-pro.com/documentation/login/#Shortcode) to the [login required message setting](http://connections-pro.com/documentation/settings/#Require_Login) (or any page you want, the shortcode is not limited to this setting). When it is added and the user is not logged in and visit your directory, they'll be shown your message plus the login form.
 

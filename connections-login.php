@@ -94,6 +94,7 @@ if ( ! class_exists('Connections_Login') ) {
 
 			// Register the shortcode.
 			add_shortcode( 'connections_login', array( __CLASS__, 'shortcode' ) );
+			add_action( 'init', array( \Connections_Directory\includes\Shortcode\User_Property::class, 'add' ) );
 		}
 
 		/**
@@ -124,7 +125,8 @@ if ( ! class_exists('Connections_Login') ) {
 		 */
 		private static function loadDependencies() {
 
-			require_once( CNL_PATH . 'includes/class.widgets.php' );
+			require_once CNL_PATH . 'includes/class.widgets.php';
+			require_once CNL_PATH . 'includes/Shortcode/User_Property.php';
 		}
 
 		/**
