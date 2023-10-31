@@ -409,31 +409,12 @@ if ( ! class_exists('Connections_Login') ) {
 	 * @access public
 	 * @since 1.0
 	 *
-	 * @return Connections_Login|false
+	 * @return Connections_Login
 	 */
 	function Connections_Login() {
 
-		if ( class_exists( 'connectionsLoad' ) ) {
-
-			return new Connections_Login();
-
-		} else {
-
-			add_action(
-				'admin_notices',
-				function() {
-					echo '<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Login.</p></div>';
-				}
-			);
-
-			return false;
-		}
+		return new Connections_Login();
 	}
 
-	/**
-	 * Since Connections loads at default priority 10, and this extension is dependent on Connections,
-	 * we'll load with priority 11, so we know Connections will be loaded and ready first.
-	 */
-	add_action( 'plugins_loaded', 'Connections_Login', 11 );
-
+	add_action( 'Connections_Directory/Loaded', 'Connections_Login' );
 }
