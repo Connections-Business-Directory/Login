@@ -93,7 +93,7 @@ if ( ! class_exists('Connections_Login') ) {
 			add_action( 'widgets_init', array( 'CN_Login_Form_Widget', 'register' ) );
 
 			// Register the shortcode.
-			add_shortcode( 'connections_login', array( __CLASS__, 'shortcode' ) );
+			add_action( 'init', array( \Connections_Directory\includes\Shortcode\Login_Form::class, 'add' ) );
 			add_action( 'init', array( \Connections_Directory\includes\Shortcode\User_Property::class, 'add' ) );
 		}
 
@@ -126,6 +126,7 @@ if ( ! class_exists('Connections_Login') ) {
 		private static function loadDependencies() {
 
 			require_once CNL_PATH . 'includes/class.widgets.php';
+			require_once CNL_PATH . 'includes/Shortcode/Login_Form.php';
 			require_once CNL_PATH . 'includes/Shortcode/User_Property.php';
 		}
 
@@ -381,101 +382,6 @@ if ( ! class_exists('Connections_Login') ) {
 		}
 
 		/**
-		 * Default parameters for the login form.
-		 *
-		 * @access internal
-		 * @since 2.0.2
-		 *
-		 * @return array
-		 */
-		protected static function getLoginFormDefaults() {
-
-			$request  = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-			$redirect = \Connections_Directory\Request\Redirect::input()
-															   ->setDefault( $request )
-															   ->value();
-
-			$defaults = array(
-				'redirect'       => $redirect,
-				'form_id'        => 'loginform',
-				'label_username' => __( 'Username', 'connections_login' ),
-				'label_password' => __( 'Password', 'connections_login' ),
-				'label_remember' => __( 'Remember Me', 'connections_login' ),
-				'label_log_in'   => __( 'Log In', 'connections_login' ),
-				'id_username'    => 'user_login',
-				'id_password'    => 'user_pass',
-				'id_remember'    => 'rememberme',
-				'id_submit'      => 'wp-submit',
-				'remember'       => TRUE,
-				'value_username' => NULL,
-				'value_remember' => FALSE,
-			);
-
-			return $defaults;
-		}
-
-		/**
-		 * Echos or returns the core WP login form.
-		 *
-		 * @since 1.0
-		 *
-		 * @param array $atts An associative array passed to wp_login_form()
-		 * @param bool  $echo Whether to echo the form.
-		 *
-		 * @return string
-		 */
-		public static function loginForm( array $atts = array(), bool $echo = true ) {
-
-			$atts = shortcode_atts( self::getLoginFormDefaults(), $atts, 'connections_login' );
-
-			\Connections_Directory\Utility\_array::set( $atts, 'remember', $atts['remember'] );
-			\Connections_Directory\Utility\_array::set( $atts, 'submit.id', $atts['id_submit'] );
-			\Connections_Directory\Utility\_array::set( $atts, 'submit.text', $atts['label_log_in'] );
-
-			$form = \Connections_Directory\Form\User_Login::create( $atts );
-
-			$form->setFieldValue( 'log', $atts['value_username'] );
-
-			if ( empty( $atts['redirect'] ) ) {
-
-				$atts['redirect'] = get_home_url();
-			}
-
-			$form->setRedirect( $atts['redirect'] );
-
-			if ( $atts['value_remember'] ) {
-
-				$form->setFieldValue( 'rememberme', '1' );
-			}
-
-			if ( $echo ) {
-
-				$form->render();
-			}
-
-			return $form->getHTML();
-		}
-
-		/**
-		 * Callback function run when using the shortcode.
-		 *
-		 * @internal
-		 * @since 1.0
-
-		 * @param array  $atts    The shortcode attributes array.
-		 * @param string $content
-		 * @param string $tag     The shortcode tag.
-		 *
-		 * @return string
-		 */
-		public static function shortcode( $atts, $content = '', $tag = 'connections_login' ) {
-
-			if ( is_user_logged_in() ) return '';
-
-			return self::loginForm( $atts, false );
-		}
-
-		/**
 		 * Renders the login form content block.
 		 *
 		 * Called by the cn_meta_output_field-login_form action in cnOutput->getMetaBlock().
@@ -491,7 +397,8 @@ if ( ! class_exists('Connections_Login') ) {
 
 			if ( is_user_logged_in() ) return;
 
-			self::loginForm( $atts );
+			$form = new \Connections_Directory\includes\Shortcode\Login_Form( $atts );
+			$form->render();
 		}
 
 	}

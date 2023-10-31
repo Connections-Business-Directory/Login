@@ -12,6 +12,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use Connections_Directory\includes\Shortcode\Login_Form;
 use Connections_Directory\Utility\_array;
 
 class CN_Login_Form_Widget extends WP_Widget {
@@ -538,7 +539,8 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'remember' => $instance['display_remember_me_checkbox'],
 			);
 
-			Connections_Login::loginForm( $atts );
+			$form = new Login_Form( $atts );
+			$form->render();
 
 			$this->renderLinks( 'logged_out' );
 
