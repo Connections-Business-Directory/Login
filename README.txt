@@ -98,6 +98,12 @@ None yet...
 
 == Changelog ==
 
+= 3.1 11/03/2023 =
+* FEATURE: Introduce the `user_` shortcode.
+* TWEAK: Refactor the shortcode to utilize the Shortcode API.
+* TWEAK: Refactor the plugin initialization to occur on the `Connections_Directory/Loaded` action hook.
+* TWEAK: Include the Request Reset Password, Reset Password, and User Register forms.
+
 = 3.0 10/23/2023 =
 * TWEAK: Remove unnecessary check for the `WPINC` constant.
 * TWEAK: Make `Connections_Login` class `final`.
@@ -222,4 +228,7 @@ It is recommended to back up before updating. Requires WordPress >= 5.1 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.2 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
 
 = 3.0 =
+It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
+
+= 3.1 =
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
