@@ -94,6 +94,9 @@ if ( ! class_exists('Connections_Login') ) {
 
 			// Register the shortcode.
 			add_action( 'init', array( \Connections_Directory\includes\Shortcode\Login_Form::class, 'add' ) );
+			// add_action( 'init', array( \Connections_Directory\includes\Shortcode\Request_Reset_Password::class, 'add' ) );
+			// add_action( 'init', array( \Connections_Directory\includes\Shortcode\Reset_Password::class, 'add' ) );
+			// add_action( 'init', array( \Connections_Directory\includes\Shortcode\User_Register::class, 'add' ) );
 			add_action( 'init', array( \Connections_Directory\includes\Shortcode\User_Property::class, 'add' ) );
 		}
 
@@ -127,6 +130,9 @@ if ( ! class_exists('Connections_Login') ) {
 
 			require_once CNL_PATH . 'includes/class.widgets.php';
 			require_once CNL_PATH . 'includes/Shortcode/Login_Form.php';
+			// require_once CNL_PATH . 'includes/Shortcode/Request_Reset_Password.php';
+			// require_once CNL_PATH . 'includes/Shortcode/Reset_Password.php';
+			// require_once CNL_PATH . 'includes/Shortcode/User_Register.php';
 			require_once CNL_PATH . 'includes/Shortcode/User_Property.php';
 		}
 
