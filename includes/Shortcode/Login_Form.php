@@ -85,9 +85,9 @@ final class Login_Form extends Shortcode {
 			'id_password'    => 'user_pass',
 			'id_remember'    => 'rememberme',
 			'id_submit'      => 'wp-submit',
-			'remember'       => TRUE,
-			'value_username' => NULL,
-			'value_remember' => FALSE,
+			'remember'       => true,
+			'value_username' => null,
+			'value_remember' => false,
 		);
 	}
 
