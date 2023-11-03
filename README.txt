@@ -93,6 +93,13 @@ Here are some great **free extensions** (with more on the way) that enhance your
 None yet...
 
 == Screenshots ==
+1. The login form rendered by the shortcode.
+2. The `[user_]` shortcode for the current logged-in in the Block Editor.
+3. The `[user_]` shortcode for a specific user in the Block Editor.
+4. The `[user_]` shortcode for the current logged-in in the Classic Editor.
+5. The `[user_]` shortcode for a specific user in the Classic Editor.
+6. The `[user_]` shortcode for the current logged-in rendered on a page.
+7. The `[user_]` shortcode for a specific user rendered on a page.
 
 [Screenshots can be found here.](http://connections-pro.com/add-on/login/)
 
