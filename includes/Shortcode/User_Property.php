@@ -14,18 +14,16 @@
  */
 declare( strict_types=1 );
 
-namespace Connections_Directory\includes\Shortcode;
+namespace Connections_Directory\Shortcode;
 
 use Connections_Directory\Shortcode;
-use Connections_Directory\Shortcode\Do_Shortcode;
-use Connections_Directory\Shortcode\Get_HTML;
 use Connections_Directory\Utility\_array;
 use WP_User;
 
 /**
  * Class User_Property
  *
- * @package Connections_Directory\includes\Shortcode
+ * @package Connections_Directory\Shortcode
  */
 final class User_Property extends Shortcode {
 

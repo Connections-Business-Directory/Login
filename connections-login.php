@@ -93,11 +93,11 @@ if ( ! class_exists('Connections_Login') ) {
 			add_action( 'widgets_init', array( 'CN_Login_Form_Widget', 'register' ) );
 
 			// Register the shortcode.
-			add_action( 'init', array( \Connections_Directory\includes\Shortcode\Login_Form::class, 'add' ) );
-			// add_action( 'init', array( \Connections_Directory\includes\Shortcode\Request_Reset_Password::class, 'add' ) );
-			// add_action( 'init', array( \Connections_Directory\includes\Shortcode\Reset_Password::class, 'add' ) );
-			// add_action( 'init', array( \Connections_Directory\includes\Shortcode\User_Register::class, 'add' ) );
-			add_action( 'init', array( \Connections_Directory\includes\Shortcode\User_Property::class, 'add' ) );
+			add_action( 'init', array( \Connections_Directory\Shortcode\Login_Form::class, 'add' ) );
+			// add_action( 'init', array( \Connections_Directory\Shortcode\Request_Reset_Password::class, 'add' ) );
+			// add_action( 'init', array( \Connections_Directory\Shortcode\Reset_Password::class, 'add' ) );
+			// add_action( 'init', array( \Connections_Directory\Shortcode\User_Register::class, 'add' ) );
+			add_action( 'init', array( \Connections_Directory\Shortcode\User_Property::class, 'add' ) );
 		}
 
 		/**

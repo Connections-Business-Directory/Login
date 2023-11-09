@@ -14,17 +14,15 @@
  */
 declare( strict_types=1 );
 
-namespace Connections_Directory\includes\Shortcode;
+namespace Connections_Directory\Shortcode;
 
 use Connections_Directory\Form;
 use Connections_Directory\Shortcode;
-use Connections_Directory\Shortcode\Do_Shortcode;
-use Connections_Directory\Shortcode\Get_HTML;
 
 /**
  * Class Request_Reset_Password
  *
- * @package Connections_Directory\includes\Shortcode
+ * @package Connections_Directory\Shortcode
  */
 final class Request_Reset_Password extends Shortcode {
 

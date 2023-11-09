@@ -12,7 +12,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-use Connections_Directory\includes\Shortcode\Login_Form;
+use Connections_Directory\Shortcode\Login_Form;
 use Connections_Directory\Utility\_array;
 
 class CN_Login_Form_Widget extends WP_Widget {
