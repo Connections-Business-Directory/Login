@@ -19,6 +19,11 @@ namespace Connections_Directory\Shortcode;
 use Connections_Directory\Form;
 use Connections_Directory\Shortcode;
 
+/**
+ * Class Reset_Password
+ *
+ * @package Connections_Directory\Shortcode
+ */
 final class Reset_Password extends Shortcode {
 
 	use Do_Shortcode;

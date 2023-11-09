@@ -19,6 +19,11 @@ namespace Connections_Directory\Shortcode;
 use Connections_Directory\Form;
 use Connections_Directory\Shortcode;
 
+/**
+ * Class User_Register
+ *
+ * @package Connections_Directory\Shortcode
+ */
 final class User_Register extends Shortcode {
 
 	use Do_Shortcode;
