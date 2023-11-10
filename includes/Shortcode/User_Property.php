@@ -227,7 +227,7 @@ final class User_Property extends Shortcode {
 		 * @param string $property The user property.
 		 */
 		return apply_filters(
-			'Connections_Directory/Login/Shortcode/User_Property',
+			'Connections_Directory/Login/Shortcode/User_Property/HTML',
 			$html,
 			$this->attributes['id'],
 			$property
