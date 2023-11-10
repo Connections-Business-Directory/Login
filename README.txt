@@ -107,6 +107,16 @@ None yet...
 
 == Changelog ==
 
+= 3.2 11/10/2023 =
+* FEATURE: Introduce the `[link_]` shortcode.
+* TWEAK: Do not capitalize keywords.
+* BUG: Correct the namespace for the form classes.
+* BUG: Correct filter name. Steven A. Zahm A minute ago
+* OTHER: Add screenshots to the README.txt.
+* OTHER: Update README.txt to include a link to the documentation to the `[user_]` shortcode.
+* OTHER: README.txt tweaks.
+* DEV: phpDoc updates.
+
 = 3.1 11/03/2023 =
 * FEATURE: Introduce the `user_` shortcode.
 * TWEAK: Refactor the shortcode to utilize the Shortcode API.
@@ -240,4 +250,7 @@ It is recommended to back up before updating. Requires WordPress >= 5.2 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
 
 = 3.1 =
+It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
+
+= 3.2 =
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
