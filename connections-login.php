@@ -97,6 +97,7 @@ if ( ! class_exists('Connections_Login') ) {
 			// add_action( 'init', array( \Connections_Directory\Shortcode\Request_Reset_Password::class, 'add' ) );
 			// add_action( 'init', array( \Connections_Directory\Shortcode\Reset_Password::class, 'add' ) );
 			// add_action( 'init', array( \Connections_Directory\Shortcode\User_Register::class, 'add' ) );
+			add_action( 'init', array( \Connections_Directory\Shortcode\User_Link::class, 'add' ) );
 			add_action( 'init', array( \Connections_Directory\Shortcode\User_Property::class, 'add' ) );
 		}
 
@@ -133,6 +134,7 @@ if ( ! class_exists('Connections_Login') ) {
 			// require_once CNL_PATH . 'includes/Shortcode/Request_Reset_Password.php';
 			// require_once CNL_PATH . 'includes/Shortcode/Reset_Password.php';
 			// require_once CNL_PATH . 'includes/Shortcode/User_Register.php';
+			require_once CNL_PATH . 'includes/Shortcode/User_Link.php';
 			require_once CNL_PATH . 'includes/Shortcode/User_Property.php';
 		}
 

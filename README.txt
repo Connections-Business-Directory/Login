@@ -20,6 +20,8 @@ It adds an [entry content block](http://connections-pro.com/documentation/login/
 
 Version 3.1 introduced a [`[user_]` shortcode](https://connections-pro.com/documentation/login/#user) that allows you to display the currently logged-in user or specified user profile information, including user meta and the user avatar.
 
+Version 3.2 introduced a [`[link_]` shortcode](https://connections-pro.com/documentation/login/#link) that allows you to output a login, logout, edit profile, registration, forgot password, or a dynamic login/logout link on a page.
+
 Ok, great, but how does this benefit me?
 Well, if you have the directory setup to require login, you can add the [[connections_login] shortcode](http://connections-pro.com/documentation/login/#Shortcode) to the [login required message setting](http://connections-pro.com/documentation/settings/#Require_Login) (or any page you want, the shortcode is not limited to this setting). When it is added and the user is not logged in and visit your directory, they'll be shown your message plus the login form.
 
