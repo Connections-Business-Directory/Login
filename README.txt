@@ -107,6 +107,9 @@ None yet...
 
 == Changelog ==
 
+= 3.2.1 11/14/2023 =
+* BUG: Correct the namespace for the Login form Content Block, so it does not throw a fatal error.
+
 = 3.2 11/10/2023 =
 * FEATURE: Introduce the `[link_]` shortcode.
 * TWEAK: Do not capitalize keywords.
@@ -253,4 +256,7 @@ It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
 
 = 3.2 =
+It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
+
+= 3.2.1 =
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
