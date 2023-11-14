@@ -405,7 +405,7 @@ if ( ! class_exists('Connections_Login') ) {
 
 			if ( is_user_logged_in() ) return;
 
-			$form = new \Connections_Directory\includes\Shortcode\Login_Form( $atts );
+			$form = new \Connections_Directory\Shortcode\Login_Form( $atts );
 			$form->render();
 		}
 
