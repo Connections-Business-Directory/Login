@@ -13,7 +13,7 @@
  * Plugin Name:       Connections Business Directory Extension - Login
  * Plugin URI:        https://connections-pro.com
  * Description:       An extension for the Connections plugin which adds login content box and a login widget to Connections.
- * Version:           3.2
+ * Version:           3.2.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Steven A. Zahm
@@ -29,7 +29,7 @@ if ( ! class_exists('Connections_Login') ) {
 	final class Connections_Login {
 
 		// Define version.
-		const VERSION = '3.2';
+		const VERSION = '3.2.1';
 
 		/**
 		 * @var string The absolute path this file.
