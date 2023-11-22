@@ -53,7 +53,7 @@ final class User_Property extends Shortcode {
 
 		$this->attributes = $this->prepareAttributes( $untrusted );
 		$this->content    = $content;
-		$this->html       = is_user_logged_in() ? $this->generateHTML() : '';
+		$this->html       = is_user_logged_in() || 0 < $this->attributes['id'] ? $this->generateHTML() : '';
 	}
 
 	/**
