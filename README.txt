@@ -107,6 +107,10 @@ None yet...
 
 == Changelog ==
 
+= 3.3 11/22/2023 =
+* NEW: Add support for the enclosing shortcode form to the `[user_]` shortcode.
+* BUG: In addition to checking for a logged-in user the `id` attribute should check for a positive integer in case a user ID was specified in the `[user_]` shortcode.
+
 = 3.2.1 11/14/2023 =
 * BUG: Correct the namespace for the Login form Content Block, so it does not throw a fatal error.
 
@@ -259,4 +263,7 @@ It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
 
 = 3.2.1 =
+It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
+
+= 3.3 =
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
