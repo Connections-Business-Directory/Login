@@ -159,6 +159,7 @@ final class User_Property extends Shortcode {
 
 		$html     = '';
 		$user     = get_user_by( 'id', $this->attributes['id'] );
+		$content  = $this->content;
 		$property = $this->getProperty( $this->attributes['prop'] );
 
 		if ( $user instanceof WP_User && $user->has_prop( $property ) ) {
@@ -217,6 +218,15 @@ final class User_Property extends Shortcode {
 
 			$meta = get_user_meta( $user->ID, $this->attributes['key'], true );
 			$html = is_string( $meta ) ? $meta : json_encode( $meta );
+		}
+
+		if ( 0 < strlen( $html )
+			 && 0 < strlen( $content )
+			 && str_contains( $content, '%s' )
+		) {
+
+			// $html = trim( preg_replace( '/' . preg_quote( '%s', '/' ) . '+/u', $html, $content ), '%s' );
+			$html = str_replace( '%s', $html, $content );
 		}
 
 		/**
