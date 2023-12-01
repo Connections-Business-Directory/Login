@@ -12,6 +12,7 @@
  * @copyright  Copyright (c) 2023, Steven A. Zahm
  * @link       https://connections-pro.com/
  */
+
 declare( strict_types=1 );
 
 namespace Connections_Directory\Shortcode;
