@@ -195,7 +195,7 @@ final class User_Property extends Shortcode {
 					break;
 			}
 
-		} elseif ( $user instanceof WP_User && in_array( $property, array( 'avatar', 'avatar_url' ) ) ) {
+		} elseif ( $user instanceof WP_User && in_array( $property, array( 'avatar', 'avatar_url' ), true ) ) {
 
 			switch ( $property ) {
 
