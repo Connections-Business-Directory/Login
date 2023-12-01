@@ -422,7 +422,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 		<p class="description">
 			<?php _e( 'Enter one link per line as <code>Text | URL | Capability</code>', 'connections_login' ); ?><br>
 			<?php _e( 'In place of the <code>Text</code> you can use placeholder tokens.', 'connections_login' ); ?><br>
-			<?php _e( 'In place of the <code>URL</code> you can use an URL placeholder tokens.', 'connections_login' ); ?><br>
+			<?php _e( 'In place of the <code>URL</code> you can use a URL placeholder tokens.', 'connections_login' ); ?><br>
 			<?php _e( 'The <code>Capability</code> is optional.', 'connections_login' ); ?><br>
 			<?php _e( 'Example: <code>Profile | %profile_url% | edit_posts</code>' , 'connections_login' ); ?>
 		</p>
