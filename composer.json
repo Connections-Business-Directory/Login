@@ -1,0 +1,35 @@
+{
+    "name": "connections-business-directory/excertp-plus",
+    "description": "Add-on for the Connections Business Directory plugin for WordPress.",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Steven A. Zahm"
+        }
+    ],
+    "require": {
+      "php": "^7.4||^8.0"
+    },
+    "require-dev": {
+        "phpcompatibility/php-compatibility": "*",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "wp-coding-standards/wpcs": "^3.0.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "install-codestandards": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        ],
+        "lint:php": "phpcs --report-file=PHPCS-report.txt",
+        "lint:php:report": "phpcs -s --report=source --report-width=120 --report-file=PHPCS-source-report.txt",
+        "lint:php:i18n": "phpcs --sniffs=WordPress.WP.I18n --report-file=PHPCS-i18n-report.txt",
+        "lint:php:security": "phpcs --sniffs=WordPress.Security.EscapeOutput,WordPress.Security.NonceVerification,WordPress.Security.ValidatedSanitizedInput,WordPress.Security.SafeRedirect,WordPressVIPMinimum.Security.ProperEscapingFunction,WordPressVIPMinimum.Security.Mustache --report-file=PHPCS-security-report.txt",
+        "phpcs": "phpcs",
+        "phpcsi": "phpcs -i",
+        "phpcbf": "phpcbf"
+    }
+}
