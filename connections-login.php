@@ -24,7 +24,7 @@
  * Domain Path:       /languages
  */
 
-if ( ! class_exists('Connections_Login') ) {
+if ( ! class_exists( 'Connections_Login' ) ) {
 
 	final class Connections_Login {
 
@@ -81,7 +81,7 @@ if ( ! class_exists('Connections_Login') ) {
 
 			// Add the business hours option to the admin settings page.
 			// This is also required, so it'll be rendered by $entry->getContentBlock( 'login_form' ).
-			add_filter( 'cn_content_blocks', array( __CLASS__, 'settingsOption') );
+			add_filter( 'cn_content_blocks', array( __CLASS__, 'settingsOption' ) );
 
 			// Add the action that'll be run when calling $entry->getContentBlock( 'login_form' ) from within a template.
 			add_action( 'cn_entry_output_content-login_form', array( __CLASS__, 'block' ), 10, 3 );
@@ -145,7 +145,7 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @access private
 		 * @since  1.0
 		 * @static
-		 * @param  array  $blocks An associative array containing the registered content block settings options.
+		 * @param array $blocks An associative array containing the registered content block settings options.
 		 *
 		 * @return array
 		 */
@@ -166,9 +166,9 @@ if ( ! class_exists('Connections_Login') ) {
 		public static function enqueueScripts() {
 
 			// If SCRIPT_DEBUG is set and TRUE load the non-minified JS files, otherwise, load the minified files.
-			$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-			wp_enqueue_style( 'cn-login-public', CNL_URL . "assets/css/cn-login-user$min.css", array( ), self::VERSION );
+			wp_enqueue_style( 'cn-login-public', CNL_URL . "assets/css/cn-login-user$min.css", array(), self::VERSION );
 		}
 
 		/**
@@ -293,7 +293,7 @@ if ( ! class_exists('Connections_Login') ) {
 						$string
 					);
 
-					// BuddyPress
+					// BuddyPress.
 					if ( function_exists( 'bp_loggedin_user_domain' ) ) {
 
 						$string = str_replace(
@@ -303,7 +303,7 @@ if ( ! class_exists('Connections_Login') ) {
 						);
 					}
 
-					// bbPress
+					// bbPress.
 					if ( function_exists( 'bbp_get_user_profile_url' ) ) {
 
 						$string = str_replace(
@@ -401,14 +401,13 @@ if ( ! class_exists('Connections_Login') ) {
 		 * @param array      $atts     The shortcode $atts array.
 		 * @param cnTemplate $template An instance of the cnTemplate object.
 		 */
-		public static function block( $entry, $atts = array(), $template = FALSE ) {
+		public static function block( $entry, $atts = array(), $template = false ) {
 
 			if ( is_user_logged_in() ) return;
 
 			$form = new \Connections_Directory\Shortcode\Login_Form( $atts );
 			$form->render();
 		}
-
 	}
 
 	/**
