@@ -59,3 +59,15 @@ node_modules
 ########
 build
 logs
+docs
+
+# Composer #
+############
+/vendor/
+
+# phpcs #
+#########
+/PHPCS-report.txt
+/PHPCS-source-report.txt
+/PHPCS-i18n-report.txt
+/PHPCS-security-report.txt
