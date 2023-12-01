@@ -266,4 +266,4 @@ It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
 
 = 3.3 =
-It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
+It is recommended to back up before updating. Requires WordPress >= 6.0 and PHP >= 7.4 PHP version >= 7.4 is recommended.
