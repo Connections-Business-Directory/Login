@@ -107,6 +107,16 @@ None yet...
 
 == Changelog ==
 
+= 3.4 12/01/2023 =
+* OTHER: Correct misspelling.
+* OTHER: Correct README.txt error.
+* DEV: phpDoc updates.
+* DEV: Add WPCS.
+* DEV: Update `.gitignore` and `.gitattributes` for Composer.
+* WPCS: There must be exactly one blank line after the file comment.
+* WPCS: Not using strict comparison for `in_array()`; supply true for `$strict` argument.
+* WPCS: Various minor code sniff corrections.
+
 = 3.3 11/22/2023 =
 * NEW: Add support for the enclosing shortcode form to the `[user_]` shortcode.
 * BUG: In addition to checking for a logged-in user the `id` attribute should check for a positive integer in case a user ID was specified in the `[user_]` shortcode.
@@ -266,4 +276,7 @@ It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.8 and PHP >= 7.4 PHP version >= 7.4 is recommended.
 
 = 3.3 =
+It is recommended to back up before updating. Requires WordPress >= 6.0 and PHP >= 7.4 PHP version >= 7.4 is recommended.
+
+= 3.4 =
 It is recommended to back up before updating. Requires WordPress >= 6.0 and PHP >= 7.4 PHP version >= 7.4 is recommended.
