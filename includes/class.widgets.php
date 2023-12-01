@@ -265,7 +265,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 			$instance['display_lost_password_link']
 		);
 
-		if ( get_option('users_can_register') ) {
+		if ( get_option( 'users_can_register' ) ) {
 
 			cnHTML::field(
 				array(
@@ -424,7 +424,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 			<?php _e( 'In place of the <code>Text</code> you can use placeholder tokens.', 'connections_login' ); ?><br>
 			<?php _e( 'In place of the <code>URL</code> you can use a URL placeholder tokens.', 'connections_login' ); ?><br>
 			<?php _e( 'The <code>Capability</code> is optional.', 'connections_login' ); ?><br>
-			<?php _e( 'Example: <code>Profile | %profile_url% | edit_posts</code>' , 'connections_login' ); ?>
+			<?php _e( 'Example: <code>Profile | %profile_url% | edit_posts</code>', 'connections_login' ); ?>
 		</p>
 
 		<p class="description">
@@ -496,7 +496,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 			$title = apply_filters( 'widget_title', $instance['title-logged-in'], $instance, $this->id_base, $this );
 			$title = Connections_Login::replaceTokens( $title, 'string' );
 
-			echo $before_title . $title . $after_title .PHP_EOL;
+			echo $before_title . $title . $after_title . PHP_EOL;
 
 			/**
 			 * @since 2.0
@@ -585,7 +585,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 		switch ( $type ) {
 
 			case 'avatar':
-				$user  = wp_get_current_user();
+				$user = wp_get_current_user();
 
 				echo get_avatar( $user->ID, $this->instance['image_size'] );
 				break;
@@ -623,7 +623,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 		$user  = wp_get_current_user();
 		$links = array();
 
-		if ( $context == 'logged_in' ) {
+		if ( 'logged_in' == $context ) {
 
 			if ( $this->instance['display_profile_link'] ) {
 
@@ -644,7 +644,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 			$links = array_merge( $links, $this->parseLinks( $this->instance['links-logged-in'] ) );
 		}
 
-		if ( $context == 'logged_out' ) {
+		if ( 'logged_out' == $context ) {
 
 			if ( $this->instance['display_lost_password_link'] ) {
 
