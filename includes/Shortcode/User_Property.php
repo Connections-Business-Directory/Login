@@ -230,6 +230,8 @@ final class User_Property extends Shortcode {
 		}
 
 		/**
+		 * Filter the generated HTML.
+		 *
 		 * @since 3.1
 		 *
 		 * @param string $html     The escaped output of the shortcode.
