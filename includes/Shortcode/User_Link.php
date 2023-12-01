@@ -12,6 +12,7 @@
  * @copyright  Copyright (c) 2023, Steven A. Zahm
  * @link       https://connections-pro.com/
  */
+
 declare( strict_types=1 );
 
 namespace Connections_Directory\Shortcode;
@@ -132,10 +133,10 @@ final class User_Link extends Shortcode {
 			'profile',
 			'registration',
 			'reset_password',
-			'log_in|out'
+			'log_in|out',
 		);
 
-		if ( ! in_array( $attributes['action'], $actions ) ) {
+		if ( ! in_array( $attributes['action'], $actions, true ) ) {
 
 			$attributes['action'] = 'log_in/out';
 		}

@@ -9,12 +9,15 @@
  * @since       1.0
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 use Connections_Directory\Shortcode\Login_Form;
 use Connections_Directory\Utility\_array;
 
+/**
+ * Class CN_Login_Form_Widget
+ */
 class CN_Login_Form_Widget extends WP_Widget {
 
 	/**
@@ -30,7 +33,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 	public function __construct() {
 
 		$options = array(
-			'description' => __( 'Login', 'connections_login' )
+			'description' => __( 'Login', 'connections_login' ),
 		);
 
 		parent::__construct(
@@ -128,17 +131,17 @@ class CN_Login_Form_Widget extends WP_Widget {
 	 */
 	public function update( $new, $old ) {
 
-		// Common Settings
+		// Common Settings.
 		$new['display_entry_only'] = _array::get( $new, 'display_entry_only', '0' );
 
-		// Logged-out Settings
+		// Logged-out Settings.
 		$new['title-logged-out']             = sanitize_text_field( $new['title-logged-out'] );
 		$new['links-logged-out']             = wp_kses_data( $new['links-logged-out'] );
 		$new['display_remember_me_checkbox'] = _array::get( $new, 'display_remember_me_checkbox', '0' );
 		$new['display_lost_password_link']   = _array::get( $new, 'display_lost_password_link', '0' );
 		$new['display_register_link']        = _array::get( $new, 'display_register_link', '0' );
 
-		// Logged-in Settings
+		// Logged-in Settings.
 		$new['title-logged-in']      = sanitize_text_field( $new['title-logged-in'] );
 		$new['links-logged-in']      = wp_kses_data( $new['links-logged-in'] );
 		$new['display_profile_link'] = _array::get( $new, 'display_profile_link', '0' );
@@ -331,15 +334,15 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 		cnHTML::field(
 			array(
-				'type'     => 'select',
-				'prefix'   => '',
-				'id'       => $this->get_field_id('image'),
-				'name'     => $this->get_field_name('image'),
-				'label'    => __( 'Show Image:', 'connections_login' ),
-				'before'   => '<p>',
-				'after'    => '</p>',
-				'layout'   => '%label% %field%',
-				'options'  => $this->imageTypes(),
+				'type'    => 'select',
+				'prefix'  => '',
+				'id'      => $this->get_field_id( 'image' ),
+				'name'    => $this->get_field_name( 'image' ),
+				'label'   => __( 'Show Image:', 'connections_login' ),
+				'before'  => '<p>',
+				'after'   => '</p>',
+				'layout'  => '%label% %field%',
+				'options' => $this->imageTypes(),
 			),
 			$instance['image']
 		);
@@ -349,12 +352,12 @@ class CN_Login_Form_Widget extends WP_Widget {
 				'type'   => 'number',
 				'prefix' => '',
 				'class'  => 'small-text',
-				'id'     => $this->get_field_id('image_size'),
-				'name'   => $this->get_field_name('image_size'),
-				'label'  => __( 'Image Size:', 'connections_widgets' ),
+				'id'     => $this->get_field_id( 'image_size' ),
+				'name'   => $this->get_field_name( 'image_size' ),
+				'label'  => __( 'Image Size:', 'connections_login' ),
 				'before' => '<p>',
 				'after'  => 'px</p>',
-				'layout'   => '%label% %field%',
+				'layout' => '%label% %field%',
 			),
 			absint( $instance['image_size'] )
 		);
@@ -524,7 +527,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 			$title = apply_filters( 'widget_title', $instance['title-logged-out'], $instance, $this->id_base, $this );
 
-			echo $before_title . $title . $after_title .PHP_EOL;
+			echo $before_title . $title . $after_title . PHP_EOL;
 
 			/**
 			 * @since 2.0
@@ -582,14 +585,12 @@ class CN_Login_Form_Widget extends WP_Widget {
 		switch ( $type ) {
 
 			case 'avatar':
-
 				$user  = wp_get_current_user();
 
 				echo get_avatar( $user->ID, $this->instance['image_size'] );
 				break;
 
 			default:
-
 				/**
 				 * @since 2.0
 				 *
@@ -628,7 +629,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 				$links['profile'] = array(
 					'text' => esc_html__( 'Profile', 'connections_login' ),
-					'url'  => get_edit_profile_url( $user->ID )
+					'url'  => get_edit_profile_url( $user->ID ),
 				);
 			}
 
@@ -636,7 +637,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 				$links['logout'] = array(
 					'text' => esc_html__( 'Logout', 'connections_login' ),
-					'url'  => apply_filters( 'cn_login_logout_url', wp_logout_url( get_permalink() ) )
+					'url'  => apply_filters( 'cn_login_logout_url', wp_logout_url( get_permalink() ) ),
 				);
 			}
 
@@ -649,24 +650,24 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 				$links['lost_password'] = array(
 					'text' => esc_html__( 'Lost Password', 'connections_login' ),
-					'url'  => apply_filters( 'cn_login_widget_lost_password_url', wp_lostpassword_url() )
+					'url'  => apply_filters( 'cn_login_widget_lost_password_url', wp_lostpassword_url() ),
 				);
 			}
 
-			if ( get_option('users_can_register') && $this->instance['display_register_link'] ) {
+			if ( get_option( 'users_can_register' ) && $this->instance['display_register_link'] ) {
 
 				if ( ! is_multisite() ) {
 
 					$links['register'] = array(
 						'text' => esc_html__( 'Register', 'connections_login' ),
-						'url'  => apply_filters( 'cn_login_widget_register_url', site_url( 'wp-login.php?action=register', 'login' ) )
+						'url'  => apply_filters( 'cn_login_widget_register_url', site_url( 'wp-login.php?action=register', 'login' ) ),
 					);
 
 				} else {
 
 					$links['register'] = array(
 						'text' => esc_html__( 'Register', 'connections_login' ),
-						'url'  => apply_filters( 'cn_login_widget_register_url', site_url('wp-signup.php', 'login') )
+						'url'  => apply_filters( 'cn_login_widget_register_url', site_url( 'wp-signup.php', 'login' ) ),
 					);
 
 				}
@@ -696,7 +697,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 		 */
 		do_action( 'cn_login_widget_before_' . $context . '_links', $links, $this );
 
-		if ( ! empty( $links ) && is_array( $links ) && 0 < count(  $links ) ) {
+		if ( ! empty( $links ) && is_array( $links ) && 0 < count( $links ) ) {
 
 			echo '<ul class="pagenav cn_login_links">';
 
@@ -762,7 +763,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 				continue;
 			}
 
-			// Check capability
+			// Check capability.
 			if ( ! empty( $capability ) ) {
 
 				if ( ! current_user_can( strtolower( $capability ) ) ) {
@@ -772,7 +773,7 @@ class CN_Login_Form_Widget extends WP_Widget {
 
 			$links[ sanitize_title( $text ) ] = array(
 				'text' => $text,
-				'url'  => $url
+				'url'  => $url,
 			);
 		}
 
